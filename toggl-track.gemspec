@@ -5,7 +5,7 @@ require 'toggl_track/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "toggl-track"
-  spec.version       = TogglV8::VERSION
+  spec.version       = TogglTrack::VERSION
   spec.authors       = ["Tom Kane", "Gabriel Fortuna"]
   spec.email         = ["kexf7pqsdu@snkmail.com", "gee.forr@gmail.com"]
   spec.summary       = %q{Toggl Track API Client (See https://github.com/toggl/toggl_api_docs)}
