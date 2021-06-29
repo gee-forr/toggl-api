@@ -2,14 +2,14 @@ require 'fileutils'
 
 describe 'ReportsV2' do
   it 'initializes with api_token' do
-    reports = TogglV8::ReportsV2.new(api_token: Testing::API_TOKEN)
+    reports = TogglTrack::ReportsV2.new(api_token: Testing::API_TOKEN)
     env = reports.env
     expect(env).to_not be nil
     expect(env['user']['api_token']).to eq Testing::API_TOKEN
   end
 
   it 'does not initialize with bogus api_token' do
-    reports = TogglV8::ReportsV2.new(api_token: '4880nqor1orr9n241sn08070q33oq49s')
+    reports = TogglTrack::ReportsV2.new(api_token: '4880nqor1orr9n241sn08070q33oq49s')
     expect { reports.env }.to raise_error(RuntimeError, "HTTP Status: 401")
   end
 
@@ -29,7 +29,7 @@ describe 'ReportsV2' do
       toggl_file = File.join(@tmp_home, '.toggl')
       File.open(toggl_file, 'w') { |file| file.write(Testing::API_TOKEN) }
 
-      reports = TogglV8::ReportsV2.new
+      reports = TogglTrack::ReportsV2.new
       env = reports.env
       expect(env).to_not be nil
       expect(env['user']['api_token']).to eq Testing::API_TOKEN
@@ -39,20 +39,20 @@ describe 'ReportsV2' do
       toggl_file = File.join(@tmp_home, 'my_toggl')
       File.open(toggl_file, 'w') { |file| file.write(Testing::API_TOKEN) }
 
-      reports = TogglV8::ReportsV2.new(toggl_api_file: toggl_file)
+      reports = TogglTrack::ReportsV2.new(toggl_api_file: toggl_file)
       env = reports.env
       expect(env).to_not be nil
       expect(env['user']['api_token']).to eq Testing::API_TOKEN
     end
 
     it 'raises error if .toggl file is missing' do
-      expect{ reports = TogglV8::ReportsV2.new }.to raise_error(RuntimeError)
+      expect{ reports = TogglTrack::ReportsV2.new }.to raise_error(RuntimeError)
     end
   end
 
   context 'handles errors' do
     before :all do
-      @reports = TogglV8::ReportsV2.new(api_token: Testing::API_TOKEN)
+      @reports = TogglTrack::ReportsV2.new(api_token: Testing::API_TOKEN)
       @reports.workspace_id = @workspace_id
     end
 
@@ -78,7 +78,7 @@ describe 'ReportsV2' do
 
   context 'miscellaneous' do
     it 'env returns environment' do
-      reports = TogglV8::ReportsV2.new(api_token: Testing::API_TOKEN)
+      reports = TogglTrack::ReportsV2.new(api_token: Testing::API_TOKEN)
       reports.workspace_id = @workspace_id
       env = reports.env
       expect(env['workspace']).to_not be nil
@@ -87,14 +87,14 @@ describe 'ReportsV2' do
     end
 
     it 'index returns endpoints' do
-      reports = TogglV8::ReportsV2.new(api_token: Testing::API_TOKEN)
+      reports = TogglTrack::ReportsV2.new(api_token: Testing::API_TOKEN)
       reports.workspace_id = @workspace_id
       index = reports.index
       expect(index['Welcome to reports api V2. VALID requests are:']).to_not be nil
     end
 
     it 'revision has not changed' do
-      reports = TogglV8::ReportsV2.new(api_token: Testing::API_TOKEN)
+      reports = TogglTrack::ReportsV2.new(api_token: Testing::API_TOKEN)
       reports.workspace_id = @workspace_id
       expect(reports.revision).to start_with "0.0.38\n"
     end
@@ -102,7 +102,7 @@ describe 'ReportsV2' do
 
   context 'project', :pro_account do
     before :all do
-      @toggl = TogglV8::API.new(Testing::API_TOKEN)
+      @toggl = TogglTrack::API.new(Testing::API_TOKEN)
       @project_name = "Project #{Time.now.iso8601}"
       @project = @toggl.create_project({
         'name' => @project_name,
@@ -115,7 +115,7 @@ describe 'ReportsV2' do
     end
 
     it 'dashboard' do
-      reports = TogglV8::ReportsV2.new(api_token: Testing::API_TOKEN)
+      reports = TogglTrack::ReportsV2.new(api_token: Testing::API_TOKEN)
       reports.workspace_id = @toggl.workspaces.first['id']
       project_dashboard = reports.project(@project['id'])
 
@@ -125,10 +125,10 @@ describe 'ReportsV2' do
 
   context 'blank reports' do
     before :all do
-      @toggl = TogglV8::API.new(Testing::API_TOKEN)
+      @toggl = TogglTrack::API.new(Testing::API_TOKEN)
       @workspaces = @toggl.workspaces
       @workspace_id = @workspaces.first['id']
-      @reports = TogglV8::ReportsV2.new(api_token: Testing::API_TOKEN)
+      @reports = TogglTrack::ReportsV2.new(api_token: Testing::API_TOKEN)
       @reports.workspace_id = @workspace_id
     end
 
@@ -147,7 +147,7 @@ describe 'ReportsV2' do
 
   context 'reports' do
     before :all do
-      @toggl = TogglV8::API.new(Testing::API_TOKEN)
+      @toggl = TogglTrack::API.new(Testing::API_TOKEN)
       @workspaces = @toggl.workspaces
       @workspace_id = @workspaces.first['id']
       time_entry_info = {
@@ -158,7 +158,7 @@ describe 'ReportsV2' do
 
       @time_entry = @toggl.create_time_entry(time_entry_info)
 
-      @reports = TogglV8::ReportsV2.new(api_token: Testing::API_TOKEN)
+      @reports = TogglTrack::ReportsV2.new(api_token: Testing::API_TOKEN)
       @reports.workspace_id = @workspace_id
 
       @tmp_home = mktemp_dir

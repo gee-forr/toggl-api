@@ -1,6 +1,6 @@
 describe 'Clients' do
   before :all do
-    @toggl = TogglV8::API.new(Testing::API_TOKEN)
+    @toggl = TogglTrack::API.new(Testing::API_TOKEN)
     @workspaces = @toggl.workspaces
     @workspace_id = @workspaces.first['id']
   end
@@ -23,7 +23,7 @@ describe 'Clients' do
     end
 
     after :all do
-      TogglV8SpecHelper.delete_all_clients(@toggl)
+      TogglTrackSpecHelper.delete_all_clients(@toggl)
       clients = @toggl.my_clients
       expect(clients).to be_empty
     end
@@ -86,7 +86,7 @@ describe 'Clients' do
         end
 
         after :all do
-          TogglV8SpecHelper.delete_all_projects(@toggl)
+          TogglTrackSpecHelper.delete_all_projects(@toggl)
         end
 
         it 'gets a client project' do

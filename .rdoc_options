@@ -3,7 +3,6 @@ encoding: UTF-8
 static_path: []
 rdoc_include:
 - "."
-- "/Users/tk/src/togglv8"
 charset: UTF-8
 exclude:
 hyperlink_all: false
@@ -18,6 +17,6 @@ page_dir:
 show_hash: false
 tab_width: 8
 template_stylesheets: []
-title: Toggl V8
+title: Toggl Track
 visibility: :protected
 webcvs:

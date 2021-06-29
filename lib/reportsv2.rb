@@ -1,24 +1,24 @@
-module TogglV8
-  TOGGL_REPORTS_URL = 'https://toggl.com/reports/api/'
+module TogglTrack
+  TOGGL_REPORTS_URL = "https://api.track.toggl.com/reports/api".freeze
 
   class ReportsV2
-    include TogglV8::Connection
+    include TogglTrack::Connection
 
-    REPORTS_V2_URL = TOGGL_REPORTS_URL + 'v2/'
+    REPORTS_V2_URL = "#{TOGGL_REPORTS_URL}/v2/".freeze
 
-    attr_reader :conn
-
+    attr_reader   :conn
     attr_accessor :workspace_id
 
-    def initialize(opts={})
+    def initialize(**opts)
       debug(false)
 
-      @user_agent = TogglV8::NAME
+      @user_agent = TogglTrack::NAME
+      username    = opts[:api_token]
 
-      username = opts[:api_token]
       if username.nil?
         toggl_api_file = opts[:toggl_api_file] || File.join(Dir.home, TOGGL_FILE)
-        if File.exist?(toggl_api_file) then
+
+        if File.exist?(toggl_api_file)
           username = IO.read(toggl_api_file)
         else
           raise "Expecting one of:\n" +
@@ -30,7 +30,7 @@ module TogglV8
         end
       end
 
-      @conn = TogglV8::Connection.open(username, API_TOKEN, REPORTS_V2_URL, opts)
+      @conn = TogglTrack::Connection.open(username, API_TOKEN, REPORTS_V2_URL, **opts)
     end
 
     ##

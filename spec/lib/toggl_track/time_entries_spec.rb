@@ -2,7 +2,7 @@ require 'date'
 
 describe 'Time Entries' do
   before :all do
-    @toggl = TogglV8::API.new(Testing::API_TOKEN)
+    @toggl = TogglTrack::API.new(Testing::API_TOKEN)
     @workspaces = @toggl.workspaces
     @workspace_id = @workspaces.first['id']
   end
@@ -171,7 +171,7 @@ describe 'Time Entries' do
     end
 
     after :all do
-      TogglV8SpecHelper.delete_all_time_entries(@toggl)
+      TogglTrackSpecHelper.delete_all_time_entries(@toggl)
     end
 
     it 'gets time entries (reaching back 9 days up till now)' do
@@ -268,8 +268,8 @@ describe 'Time Entries' do
     end
 
     after :each do
-      TogglV8SpecHelper.delete_all_time_entries(@toggl)
-      TogglV8SpecHelper.delete_all_tags(@toggl)
+      TogglTrackSpecHelper.delete_all_time_entries(@toggl)
+      TogglTrackSpecHelper.delete_all_tags(@toggl)
     end
 
     it 'adds and removes one tag' do

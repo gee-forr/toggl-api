@@ -1,6 +1,6 @@
 describe 'Tags' do
   before :all do
-    @toggl = TogglV8::API.new(Testing::API_TOKEN)
+    @toggl = TogglTrack::API.new(Testing::API_TOKEN)
     @workspaces = @toggl.workspaces
     @workspace_id = @workspaces.first['id']
   end
@@ -13,7 +13,7 @@ describe 'Tags' do
     end
 
     after :all do
-      TogglV8SpecHelper.delete_all_tags(@toggl)
+      TogglTrackSpecHelper.delete_all_tags(@toggl)
       tags = @toggl.my_tags
       expect(tags).to be_empty
     end
