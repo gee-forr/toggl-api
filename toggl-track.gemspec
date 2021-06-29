@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'togglv8/version'
+require 'toggl_track/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "togglv8"
+  spec.name          = "toggl-track"
   spec.version       = TogglV8::VERSION
-  spec.authors       = ["Tom Kane"]
-  spec.email         = ["kexf7pqsdu@snkmail.com"]
-  spec.summary       = %q{Toggl v8 API wrapper (See https://github.com/toggl/toggl_api_docs)}
-  spec.homepage      = "https://github.com/kanet77/togglv8"
+  spec.authors       = ["Tom Kane", "Gabriel Fortuna"]
+  spec.email         = ["kexf7pqsdu@snkmail.com", "gee.forr@gmail.com"]
+  spec.summary       = %q{Toggl Track API Client (See https://github.com/toggl/toggl_api_docs)}
+  spec.homepage      = "https://github.com/gee-forr/toggl-api/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.requirements  << 'A Toggl account (https://toggl.com/)'
+  spec.requirements  << 'A Toggl Track account (https://toggl.com/track)'
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec-mocks"
   spec.add_development_dependency "fivemat"
   spec.add_development_dependency "coveralls"
-  # spec.add_development_dependency "awesome_print"
+  spec.add_development_dependency "awesome_print"
 
   spec.add_dependency "logger"
   spec.add_dependency "faraday"
