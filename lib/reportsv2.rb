@@ -1,13 +1,12 @@
 module TogglTrack
-  TOGGL_REPORTS_URL = 'https://api.track.toggl.com/reports/api'
+  TOGGL_REPORTS_URL = "https://api.track.toggl.com/reports/api".freeze
 
   class ReportsV2
     include TogglTrack::Connection
 
-    REPORTS_V2_URL = "#{TOGGL_REPORTS_URL}/v2/"
+    REPORTS_V2_URL = "#{TOGGL_REPORTS_URL}/v2/".freeze
 
-    attr_reader :conn
-
+    attr_reader   :conn
     attr_accessor :workspace_id
 
     def initialize(**opts)
