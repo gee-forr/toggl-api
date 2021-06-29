@@ -10,12 +10,12 @@ require_relative 'version'
 require_relative 'workspaces'
 
 module TogglTrack
-  TOGGL_API_URL = 'https://www.toggl.com/api/'.freeze
+  TOGGL_API_URL = 'https://api.track.toggl.com/api'.freeze
 
   class API
     include TogglTrack::Connection
 
-    TOGGL_API_V8_URL = "#{TOGGL_API_URL}v8/".freeze
+    TOGGL_API_V8_URL = "#{TOGGL_API_URL}/v8/".freeze
 
     attr_reader :conn, :toggl_api_file
 

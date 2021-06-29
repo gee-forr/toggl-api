@@ -79,9 +79,9 @@ class Testing
   EMAIL     = ENV['EMAIL']     || 'togglv8@mailinator.com'
   USERNAME  = ENV['USERNAME']  || 'togglv8'
   PASSWORD  = ENV['PASSWORD']  || 'togglv8'
-  USER_ID   = (ENV['USER_ID']  || 1820939).to_i
+  USER_ID   = (ENV['USER_ID']  || 1_820_939).to_i
 
   OTHER_EMAIL    = ENV['OTHER_EMAIL']    || 'pr5zwux59w@snkmail.com'
-  OTHER_USERNAME = ENV['OTHER_USERNAME'] || 'Pr5zwux59w'
-  OTHER_USER_ID  = (ENV['OTHER_USER_ID'] || 2450739).to_i
+  OTHER_USERNAME = ENV['OTHER_USERNAME'] || 'togglv8@mailinator.com'
+  OTHER_USER_ID  = (ENV['OTHER_USER_ID'] || 1_820_939).to_i
 end

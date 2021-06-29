@@ -1,10 +1,10 @@
 module TogglTrack
-  TOGGL_REPORTS_URL = 'https://toggl.com/reports/api/'
+  TOGGL_REPORTS_URL = 'https://api.track.toggl.com/reports/api'
 
   class ReportsV2
     include TogglTrack::Connection
 
-    REPORTS_V2_URL = TOGGL_REPORTS_URL + 'v2/'
+    REPORTS_V2_URL = "#{TOGGL_REPORTS_URL}/v2/"
 
     attr_reader :conn
 
