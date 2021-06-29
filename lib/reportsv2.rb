@@ -10,15 +10,16 @@ module TogglTrack
 
     attr_accessor :workspace_id
 
-    def initialize(opts={})
+    def initialize(**opts)
       debug(false)
 
       @user_agent = TogglTrack::NAME
+      username    = opts[:api_token]
 
-      username = opts[:api_token]
       if username.nil?
         toggl_api_file = opts[:toggl_api_file] || File.join(Dir.home, TOGGL_FILE)
-        if File.exist?(toggl_api_file) then
+
+        if File.exist?(toggl_api_file)
           username = IO.read(toggl_api_file)
         else
           raise "Expecting one of:\n" +
@@ -30,7 +31,7 @@ module TogglTrack
         end
       end
 
-      @conn = TogglTrack::Connection.open(username, API_TOKEN, REPORTS_V2_URL, opts)
+      @conn = TogglTrack::Connection.open(username, API_TOKEN, REPORTS_V2_URL, **opts)
     end
 
     ##
