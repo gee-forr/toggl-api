@@ -1,4 +1,4 @@
-module TogglV8
+module TogglTrack
   TOGGL_REPORTS_URL = 'https://toggl.com/reports/api/'
 
   class ReportsV2

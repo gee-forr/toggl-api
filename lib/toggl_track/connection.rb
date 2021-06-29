@@ -3,7 +3,7 @@ require 'oj'
 
 require_relative '../logging'
 
-module TogglV8
+module TogglTrack
   module Connection
     include Logging
 

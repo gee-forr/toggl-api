@@ -9,7 +9,7 @@ require_relative 'users'
 require_relative 'version'
 require_relative 'workspaces'
 
-module TogglV8
+module TogglTrack
   TOGGL_API_URL = 'https://www.toggl.com/api/'
 
   class API
@@ -41,15 +41,3 @@ module TogglV8
     end
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
