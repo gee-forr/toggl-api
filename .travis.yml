@@ -1,16 +1,9 @@
 language: ruby
 rvm:
   - ruby-head
-  - 2.4.0
-  - 2.3.3
-  - 2.2.6
-  - 2.1.10
-  - 2.0.0-p648
+  - 3.0.0
+  - 2.7.0
+  - 2.6.0
+  - 2.5.0
 script: bundle exec rspec --format documentation
 cache: bundler
-branches:
-  only:
-    - master
-addons:
-  code_climate:
-    repo_token: eb44970f9efc497fb68c6ec1ce051dea530776b6a5bbe75e57734625f761ac86
