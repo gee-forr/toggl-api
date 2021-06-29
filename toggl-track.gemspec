@@ -20,14 +20,17 @@ Gem::Specification.new do |spec|
   spec.requirements  << 'A Toggl Track account (https://toggl.com/track)'
 
   spec.add_development_dependency "bundler"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec"
-  spec.add_development_dependency "rspec-mocks"
-  spec.add_development_dependency "fivemat"
   spec.add_development_dependency "coveralls"
-  spec.add_development_dependency "awesome_print"
+  spec.add_development_dependency "fivemat"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec-mocks"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "rubocop-performance"
+  spec.add_development_dependency "rubocop-rspec"
+  spec.add_development_dependency "rubocop"
 
-  spec.add_dependency "logger"
+
   spec.add_dependency "faraday"
+  spec.add_dependency "logger"
   spec.add_dependency "oj"
 end
