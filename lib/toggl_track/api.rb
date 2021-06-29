@@ -13,7 +13,7 @@ module TogglTrack
   TOGGL_API_URL = 'https://www.toggl.com/api/'
 
   class API
-    include TogglV8::Connection
+    include TogglTrack::Connection
 
     TOGGL_API_V8_URL = TOGGL_API_URL + 'v8/'
 
@@ -36,7 +36,7 @@ module TogglTrack
         end
       end
 
-      @conn = TogglV8::Connection.open(username, password,
+      @conn = TogglTrack::Connection.open(username, password,
                 TOGGL_API_V8_URL, opts)
     end
   end

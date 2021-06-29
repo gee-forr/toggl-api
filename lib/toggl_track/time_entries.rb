@@ -25,7 +25,7 @@ module TogglTrack
     # at           : timestamp that is sent in the response, indicates the time item was last updated
 
     def create_time_entry(params)
-      params['created_with'] = TogglV8::NAME unless params.has_key?('created_with')
+      params['created_with'] = TogglTrack::NAME unless params.has_key?('created_with')
       requireParams(params, ['start', 'duration', 'created_with'])
       if !params.has_key?('wid') and !params.has_key?('pid') and !params.has_key?('tid') then
         raise ArgumentError, "one of params['wid'], params['pid'], params['tid'] is required"
@@ -34,7 +34,7 @@ module TogglTrack
     end
 
     def start_time_entry(params)
-      params['created_with'] = TogglV8::NAME unless params.has_key?('created_with')
+      params['created_with'] = TogglTrack::NAME unless params.has_key?('created_with')
       if !params.has_key?('wid') and !params.has_key?('pid') and !params.has_key?('tid') then
         raise ArgumentError, "one of params['wid'], params['pid'], params['tid'] is required"
       end

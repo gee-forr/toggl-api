@@ -2,7 +2,7 @@ module TogglTrack
   TOGGL_REPORTS_URL = 'https://toggl.com/reports/api/'
 
   class ReportsV2
-    include TogglV8::Connection
+    include TogglTrack::Connection
 
     REPORTS_V2_URL = TOGGL_REPORTS_URL + 'v2/'
 
@@ -13,7 +13,7 @@ module TogglTrack
     def initialize(opts={})
       debug(false)
 
-      @user_agent = TogglV8::NAME
+      @user_agent = TogglTrack::NAME
 
       username = opts[:api_token]
       if username.nil?
@@ -30,7 +30,7 @@ module TogglTrack
         end
       end
 
-      @conn = TogglV8::Connection.open(username, API_TOKEN, REPORTS_V2_URL, opts)
+      @conn = TogglTrack::Connection.open(username, API_TOKEN, REPORTS_V2_URL, opts)
     end
 
     ##

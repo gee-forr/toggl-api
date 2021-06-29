@@ -1,7 +1,7 @@
 # :nocov:
-require_relative '../lib/togglv8'
+require_relative '../lib/toggl_track'
 
-class TogglV8SpecHelper
+class TogglTrackSpecHelper
   include Logging
 
   def self.setUp(toggl)

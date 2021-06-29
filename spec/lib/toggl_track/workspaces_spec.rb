@@ -1,6 +1,6 @@
 describe 'Workspaces' do
   before :all do
-    @toggl = TogglV8::API.new(Testing::API_TOKEN)
+    @toggl = TogglTrack::API.new(Testing::API_TOKEN)
     @user = @toggl.me(all=true)
     @workspaces = @toggl.workspaces
     @workspace_id = @workspaces.first['id']

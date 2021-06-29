@@ -1,6 +1,6 @@
 describe 'Projects' do
   before :all do
-    @toggl = TogglV8::API.new(Testing::API_TOKEN)
+    @toggl = TogglTrack::API.new(Testing::API_TOKEN)
     @workspaces = @toggl.workspaces
     @workspace_id = @workspaces.first['id']
   end
@@ -18,7 +18,7 @@ describe 'Projects' do
     end
 
     after :all do
-      TogglV8SpecHelper.delete_all_projects(@toggl)
+      TogglTrackSpecHelper.delete_all_projects(@toggl)
       projects = @toggl.my_projects
       expect(projects).to be_empty
     end
@@ -87,7 +87,7 @@ describe 'Projects' do
 
   context 'multiple projects' do
     after :all do
-      TogglV8SpecHelper.delete_all_projects(@toggl)
+      TogglTrackSpecHelper.delete_all_projects(@toggl)
     end
 
     it 'deletes multiple projects' do

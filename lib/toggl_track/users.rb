@@ -22,7 +22,7 @@ module TogglTrack
 
     def me(all=nil)
       # NOTE: response['since'] is discarded because it is outside response['data']
-      #       (See TogglV8::API#get in lib/togglv8.rb)
+      #       (See TogglTrack::API#get in lib/togglv8.rb)
       get "me%s" % [all.nil? ? "" : "?with_related_data=#{all}"]
     end
 
@@ -66,7 +66,7 @@ module TogglTrack
     end
 
     def create_user(params)
-      params['created_with'] = TogglV8::NAME unless params.has_key?('created_with')
+      params['created_with'] = TogglTrack::NAME unless params.has_key?('created_with')
       requireParams(params, ['email', 'password', 'timezone', 'created_with'])
       post "signups", { 'user' => params }
     end

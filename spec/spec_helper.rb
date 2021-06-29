@@ -7,8 +7,8 @@ SimpleCov.formatters = [
 ]
 SimpleCov.start
 
-require_relative 'togglv8_spec_helper'
-require_relative '../lib/togglv8'
+require_relative 'toggl_track_spec_helper'
+require_relative '../lib/toggl_track'
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
@@ -29,8 +29,8 @@ RSpec.configure do |config|
   end
 
   config.before(:suite) do
-    toggl = TogglV8::API.new(Testing::API_TOKEN)
-    TogglV8SpecHelper.setUp(toggl)  # start tests from known state
+    toggl = TogglTrack::API.new(Testing::API_TOKEN)
+    TogglTrackSpecHelper.setUp(toggl)  # start tests from known state
   end
 end
 
