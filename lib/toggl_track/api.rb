@@ -25,18 +25,16 @@ module TogglTrack
       if username.nil? && password == API_TOKEN
         toggl_api_file = File.join(Dir.home, TOGGL_FILE)
 
-        if File.exist?(toggl_api_file)
-          username = IO.read(toggl_api_file).strip
-        else
-          raise <<~EOMSG
-            Expecting one of:
-              1) api_token in file #{toggl_api_file}, or
-              2) parameter: (api_token), or
-              3) parameters: (username, password).
-                 See https://github.com/gee-forr/toggl-track#togglv8api
-                 and https://github.com/toggl/toggl_api_docs/blob/master/chapters/authentication.md
-          EOMSG
-        end
+        raise <<~EOMSG unless File.exist?(toggl_api_file)
+          Expecting one of:
+            1) api_token in file #{toggl_api_file}, or
+            2) parameter: (api_token), or
+            3) parameters: (username, password).
+               See https://github.com/gee-forr/toggl-track#togglv8api
+               and https://github.com/toggl/toggl_api_docs/blob/master/chapters/authentication.md
+        EOMSG
+
+        username = IO.read(toggl_api_file).strip
       end
 
       @conn = TogglTrack::Connection.open(username, password, TOGGL_API_V8_URL, **opts)
